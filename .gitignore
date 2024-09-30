@@ -1,0 +1,34 @@
+# Build output directories
+bin/
+obj/
+
+# NuGet packages (if not using package restore)
+packages/
+
+# Rider-specific files
+.idea/
+*.iml
+riderModule.iml
+
+# Rider caches
+/_ReSharper.Caches/
+
+# Visual Studio specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Test result files
+TestResults/
+*.trx
+*.coverage
+
+# Auto-generated files
+*.g.cs
+
+# Other environment files
+indexlayout.xml
+projectSettingsUpdater.idea
+vcs.xml
+workspace.xml
