@@ -2,9 +2,9 @@ namespace GarageConsoleApp.Entities;
 
 public abstract class Vehicle
 {
-    public string RegistrationNumber { get; set; }
-    public int WheelCount { get; set; }
-    public VehicleColor Color { get; set; }
+    public string RegistrationNumber { get; }
+    public int WheelCount { get; }
+    public VehicleColor Color { get; }
 
     protected Vehicle(string registrationNumber, int wheelCount, VehicleColor color)
     {
