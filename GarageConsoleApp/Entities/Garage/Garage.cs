@@ -4,7 +4,7 @@ namespace GarageConsoleApp.Entities.Garage;
 
 public class Garage<T> : IEnumerable<T> where T : Vehicle
 {
-    private T[] _vehicles;
+    private T?[] _vehicles;
 
     public Garage(int garageSize)
     {
@@ -24,25 +24,30 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
 
         return false; // Garage is full
     }
-
-
-    public T Remove(uint index)
+    
+    public T? RemoveByRegNumber(string regNr)
     {
-        if (index >= _vehicles.Length || _vehicles[index] == null)
+        for (int i = 0; i < _vehicles.Length; i++)
         {
-            return null; // Invalid index or no vehicle at the specified index
+            if (_vehicles[i]?.RegistrationNumber == regNr)
+            {
+                T removedVehicle = _vehicles[i];
+                _vehicles[i] = null;
+                return removedVehicle;
+            }
         }
 
-        T removedVehicle = _vehicles[index];
-        _vehicles[index] = null; // Mark the spot as empty
-        return removedVehicle;
+        return null;
     }
 
     public IEnumerator<T> GetEnumerator()
     {
         for (int i = 0; i < _vehicles.Length; i++)
         {
-            yield return _vehicles[i]; // Include null values
+            if (_vehicles[i] != null)
+            {
+                yield return _vehicles[i]; // Exclude null values
+            }
         }
     }
 
