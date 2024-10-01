@@ -17,6 +17,6 @@ public abstract class Vehicle : ICloneable
 
     public override string ToString()
     {
-        return $"Registration number: {RegistrationNumber}, Wheel Count: {WheelCount}  Color: {Color}";
+        return $"Registration Number: {RegistrationNumber}, Wheel Count: {WheelCount}, Color: {Color}";
     }
 }
