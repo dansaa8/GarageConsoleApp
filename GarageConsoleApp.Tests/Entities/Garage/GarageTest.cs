@@ -6,7 +6,7 @@ namespace GarageConsoleApp.Tests.Entities.Garage;
 public class GarageTest
 {
     [Fact]
-    public void GarageConstructorTest()
+    public void Constructor_GivenGarageSize_ReturnsNonNullGarage()
     {
         // Arrange
         int garageSize = 8;
@@ -19,7 +19,7 @@ public class GarageTest
     }
 
     [Fact]
-    public void AddVehicle_Return_True()
+    public void AddVehicle_WhenCalled_ReturnsTrue()
     {
         // Arrange
         int garageSize = 8;
@@ -34,7 +34,7 @@ public class GarageTest
     }
 
     [Fact]
-    public void AddVehicleToFullGarage_Return_False()
+    public void AddVehicle_WhenGarageIsFull_ReturnsFalse()
     {
         // Arrange
         int garageSize = 1;
