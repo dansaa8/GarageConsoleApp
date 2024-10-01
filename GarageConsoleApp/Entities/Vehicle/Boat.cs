@@ -9,4 +9,14 @@ public class Boat : Vehicle
     {
         MaxKnots = maxKnots;
     }
+
+    public override object Clone()
+    {
+        return MemberwiseClone();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $", Max Knots: {MaxKnots}";
+    }
 }

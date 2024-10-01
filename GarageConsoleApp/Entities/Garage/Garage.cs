@@ -5,7 +5,6 @@ namespace GarageConsoleApp.Entities.Garage;
 public class Garage<T> : IEnumerable<T> where T : Vehicle
 {
     private T[] _vehicles;
-    private int currentIndex = 0;
 
     public Garage(int garageSize)
     {
@@ -14,30 +13,36 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
 
     public bool Add(T vehicle)
     {
-        if (currentIndex < _vehicles.Length)
+        for (int i = 0; i < _vehicles.Length; i++)
         {
-            _vehicles[currentIndex] = vehicle;
-            currentIndex++;
-            return true;
+            if (_vehicles[i] == null) // Find the first empty spot
+            {
+                _vehicles[i] = vehicle;
+                return true;
+            }
         }
 
-        return false;
+        return false; // Garage is full
     }
 
-    public T[] GetAll()
+
+    public T Remove(uint index)
     {
-        // Make sure we send back a copy of the _vehicles so the reference doesn't get passed around
-        // and keeping it isolated to the instance only.
-        T[] vehiclesCopy = new T[currentIndex];
-        Array.Copy(_vehicles, vehiclesCopy, currentIndex);
-        return vehiclesCopy;
+        if (index >= _vehicles.Length || _vehicles[index] == null)
+        {
+            return null; // Invalid index or no vehicle at the specified index
+        }
+
+        T removedVehicle = _vehicles[index];
+        _vehicles[index] = null; // Mark the spot as empty
+        return removedVehicle;
     }
 
     public IEnumerator<T> GetEnumerator()
     {
-        for (int i = 0; i < currentIndex; i++)
+        for (int i = 0; i < _vehicles.Length; i++)
         {
-            yield return _vehicles[i]; 
+            yield return _vehicles[i]; // Include null values
         }
     }
 

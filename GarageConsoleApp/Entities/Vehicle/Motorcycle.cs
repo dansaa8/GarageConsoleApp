@@ -9,4 +9,14 @@ public class Motorcycle : Vehicle
     {
         MaxSpeedKmPerHour = maxSpeedKmPerHour;
     }
+
+    public override object Clone()
+    {
+        return MemberwiseClone();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $", Max Speed Per Kilometer: {MaxSpeedKmPerHour}";
+    }
 }

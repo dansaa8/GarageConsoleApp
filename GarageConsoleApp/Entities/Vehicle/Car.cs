@@ -9,4 +9,14 @@ public class Car : Vehicle
     {
         IsAutomatic = isAutomatic;
     }
+
+    public override object Clone()
+    {
+        return MemberwiseClone();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + $", Is Automatic: {IsAutomatic}";
+    }
 }
