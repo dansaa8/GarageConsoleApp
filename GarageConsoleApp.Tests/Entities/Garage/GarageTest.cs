@@ -52,4 +52,24 @@ public class GarageTest
         Assert.True(car1IsAdded);
         Assert.False(car2IsAdded);
     }
+
+    [Fact]
+    public void GetAllVehicles_WhenCalled_ReturnsAllVehicles()
+    {
+        // Arrange
+        int garageSize = 8;
+        Car car1 = new Car("def456", 4, VehicleColor.Black, true);
+        Car car2 = new Car("def456", 4, VehicleColor.Black, true);
+        
+        // Act
+        Garage<Vehicle> garage = new Garage<Vehicle>(garageSize);
+        bool car1IsAdded = garage.Add(car1);
+        bool car2IsAdded = garage.Add(car2);
+        var allVehicles = garage.GetAll();
+        
+        // Assert
+        Assert.Contains(car1, allVehicles);
+        Assert.Contains(car2, allVehicles);
+        Assert.Equal(2, allVehicles.Count());
+    }
 }
