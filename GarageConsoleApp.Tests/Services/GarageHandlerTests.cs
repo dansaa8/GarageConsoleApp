@@ -30,12 +30,30 @@ public class GarageHandlerTests
         // Arrange
         Garage<Vehicle> garage = createGarageWith3TestVehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
-        
+
         // Act
         string actualString = garageHandler.RemoveVehicle(garage, "jkl321");
 
         // Assert
         Assert.Empty(actualString);
+    }
+
+    [Fact]
+    public void ListAllVehiclesWithGarageHandler_WhenCalled_ReturnsStringWithAllVehicles()
+    {
+        // Arrange
+        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
+        string expectedString =
+            "Registration Number: abc123, Wheel Count: 4, Color: Black, Is Automatic: True" +
+            "\nRegistration Number: def456, Wheel Count: 4, Color: Red, Max Knots: 20,5" +
+            "\nRegistration Number: ghi789, Wheel Count: 2, Color: Yellow, Max Speed Per Kilometer: 255";
+
+        // Act
+        string actualString = garageHandler.ListAllVehicles(garage);
+
+        // Assert
+        Assert.Equal(expectedString, actualString);
     }
 
     private Garage<Vehicle> createGarageWith3TestVehicles()
