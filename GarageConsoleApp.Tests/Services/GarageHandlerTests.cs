@@ -24,6 +24,20 @@ public class GarageHandlerTests
         Assert.Equal(expectedString, actualString);
     }
 
+    [Fact]
+    public void RemoveVehicleWithGarageHandler_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
+    {
+        // Arrange
+        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
+        
+        // Act
+        string actualString = garageHandler.RemoveVehicle(garage, "jkl321");
+
+        // Assert
+        Assert.Empty(actualString);
+    }
+
     private Garage<Vehicle> createGarageWith3TestVehicles()
     {
         int garageSize = 8;
