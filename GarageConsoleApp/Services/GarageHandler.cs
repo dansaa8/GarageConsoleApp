@@ -20,7 +20,7 @@ public class GarageHandler<T> where T : Vehicle
             allVehicles.AppendLine(vehicle.ToString());
         }
 
-        return allVehicles.ToString().Trim(); // Trim() Removes last AppendLine
+        return allVehicles.ToString().Trim();
     }
 
     public string ListAllVehicleTypes(Garage<T> garage)
@@ -55,5 +55,28 @@ public class GarageHandler<T> where T : Vehicle
         }
 
         return result.ToString().Trim(); // Remove any trailing spaces
+    }
+
+    public List<string> SearchForVehicles(Garage<T> garage, SearchOptions searchOptions)
+    {
+        List<string> foundVehicles = new();
+        foreach (T vehicle in garage)
+        {
+            // ? checks if the property is null. If it is null, then the expression stops here
+            // and the value after ?? is used. Which means it's not a search criteria to look for.
+            if ((searchOptions.RegistrationNumber?
+                    .Equals(vehicle.RegistrationNumber, StringComparison.OrdinalIgnoreCase) ?? true) &&
+                (searchOptions.WheelCount?
+                    .Equals(vehicle.WheelCount) ?? true) &&
+                (searchOptions.Color?
+                    .Equals(vehicle.Color) ?? true) &&
+                (searchOptions.VehicleType?.ToString()
+                    .Equals(vehicle.GetType().Name, StringComparison.OrdinalIgnoreCase) ?? true))
+            {
+                foundVehicles.Add(vehicle.ToString());
+            }
+        }
+
+        return foundVehicles;
     }
 }
