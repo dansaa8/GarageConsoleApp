@@ -10,7 +10,7 @@ public class GarageHandlerTests
     public void RemoveVehicleWithGarageHandler_WhenCalled_ReturnsVehicleFromGarage()
     {
         // Arrange
-        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        Garage<Vehicle> garage = CreateGarageWith3TestVehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         Boat boat = new Boat("jkl321", 2, VehicleColor.White, 5.5);
@@ -28,7 +28,7 @@ public class GarageHandlerTests
     public void RemoveVehicleWithGarageHandler_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
     {
         // Arrange
-        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        Garage<Vehicle> garage = CreateGarageWith3TestVehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         // Act
@@ -42,7 +42,7 @@ public class GarageHandlerTests
     public void ListAllVehiclesWithGarageHandler_WhenCalled_ReturnsStringWithAllVehicles()
     {
         // Arrange
-        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        Garage<Vehicle> garage = CreateGarageWith3TestVehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
         string expectedString =
             "Registration Number: abc123, Wheel Count: 4, Color: Black, Is Automatic: True" +
@@ -71,23 +71,53 @@ public class GarageHandlerTests
     }
 
     [Fact]
-    public void ListAllVehicleTypes_WhenCalled_ReturnsStringWithAllVehicleTypes()
+    public void ListAllVehicleTypes_WhenCalled_ReturnsStringWithAllVehicleTypesInOrder()
     {
         // Arrange
-        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        Garage<Vehicle> garage = CreateGarageWith3TestVehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         Boat boat = new Boat("jkl321", 2, VehicleColor.White, 5.5);
         garage.Add(boat); // Add one extra vehicle
-        string expectedString = "Cars: 1" + "\nBoats: 2" + "\nMotorcycles: 1";
+        string expectedString = "Boats: 2" + "\nCars: 1" + "\nMotorcycles: 1";
 
         // Act
         string actualString = garageHandler.ListAllVehicleTypes(garage);
-        
+
         Assert.Equal(expectedString, actualString);
     }
 
-    private Garage<Vehicle> createGarageWith3TestVehicles()
+    [Fact]
+    public void ListAllVehicleTypes_WhenCalledWithOneTypeNotInGarage_ReturnsStringWithTwoTypes()
+    {
+        // Arrange
+        Garage<Vehicle> garage = CreateGarageWith3TestVehicles();
+        GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
+        garageHandler.RemoveVehicle(garage, "abc123"); // car removed, only two types should be returned
+        string expectedString = "Boats: 1" + "\nMotorcycles: 1";
+
+        // Act
+        string actualString = garageHandler.ListAllVehicleTypes(garage);
+
+        // Assert
+        Assert.Equal(expectedString, actualString);
+    }
+
+    [Fact]
+    public void ListAllVehicleTypes_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
+    {
+        // Arrange
+        Garage<Vehicle> garage = new Garage<Vehicle>(8); // Empty garage
+        GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
+
+        // Act
+        string actualString = garageHandler.ListAllVehicleTypes(garage);
+
+        // Assert
+        Assert.Empty(actualString);
+    }
+
+    private Garage<Vehicle> CreateGarageWith3TestVehicles()
     {
         int garageSize = 8;
         Car car = new Car("abc123", 4, VehicleColor.Black, true);

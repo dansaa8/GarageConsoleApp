@@ -35,6 +35,25 @@ public class GarageHandler<T> where T : Vehicle
             if (vehicle is Motorcycle) mcCount++;
         }
 
-        return $"Cars: {carCount}\nBoats: {boatCount}\nMotorcycles: {mcCount}";
+        // Create list with tuples
+        var vehicleCounts = new List<(string Type, uint Count)>();
+
+        // Only add the types to the tuple list if they are over 0
+        if (carCount > 0) vehicleCounts.Add(("Cars", carCount));
+        if (boatCount > 0) vehicleCounts.Add(("Boats", boatCount));
+        if (mcCount > 0) vehicleCounts.Add(("Motorcycles", mcCount));
+
+        vehicleCounts = vehicleCounts
+            .OrderByDescending(v => v.Count) // Sort tuplelist: highest count first
+            .ThenBy(v => v.Type) // Sort tuplelist: alphabetically if the above results in a tie
+            .ToList();
+
+        StringBuilder result = new StringBuilder();
+        foreach (var (VehicleType, Count) in vehicleCounts) // Iterate over all tuples in List
+        {
+            result.AppendLine($"{VehicleType}: {Count}"); // Append each item in list to the stringbuilder
+        }
+
+        return result.ToString().Trim(); // Remove any trailing spaces
     }
 }
