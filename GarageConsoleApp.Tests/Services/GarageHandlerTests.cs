@@ -56,6 +56,37 @@ public class GarageHandlerTests
         Assert.Equal(expectedString, actualString);
     }
 
+    [Fact]
+    public void ListAllVehiclesWithGarageHandler_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
+    {
+        // Arrange
+        Garage<Vehicle> garage = new Garage<Vehicle>(8); // empty
+        GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
+
+        // Act
+        string actualString = garageHandler.ListAllVehicles(garage);
+
+        // Assert
+        Assert.Empty(actualString);
+    }
+
+    [Fact]
+    public void ListAllVehicleTypes_WhenCalled_ReturnsStringWithAllVehicleTypes()
+    {
+        // Arrange
+        Garage<Vehicle> garage = createGarageWith3TestVehicles();
+        GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
+
+        Boat boat = new Boat("jkl321", 2, VehicleColor.White, 5.5);
+        garage.Add(boat); // Add one extra vehicle
+        string expectedString = "Cars: 1" + "\nBoats: 2" + "\nMotorcycles: 1";
+
+        // Act
+        string actualString = garageHandler.ListAllVehicleTypes(garage);
+        
+        Assert.Equal(expectedString, actualString);
+    }
+
     private Garage<Vehicle> createGarageWith3TestVehicles()
     {
         int garageSize = 8;

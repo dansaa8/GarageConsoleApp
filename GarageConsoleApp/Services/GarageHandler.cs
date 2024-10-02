@@ -22,4 +22,19 @@ public class GarageHandler<T> where T : Vehicle
 
         return allVehicles.ToString().Trim(); // Trim() Removes last AppendLine
     }
+
+    public string ListAllVehicleTypes(Garage<T> garage)
+    {
+        uint carCount = 0;
+        uint boatCount = 0;
+        uint mcCount = 0;
+        foreach (T vehicle in garage)
+        {
+            if (vehicle is Car car) carCount++;
+            if (vehicle is Boat boat) boatCount++;
+            if (vehicle is Motorcycle) mcCount++;
+        }
+
+        return $"Cars: {carCount}\nBoats: {boatCount}\nMotorcycles: {mcCount}";
+    }
 }
