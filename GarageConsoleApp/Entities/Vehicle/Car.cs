@@ -1,10 +1,12 @@
+using System.Drawing;
+
 namespace GarageConsoleApp.Entities;
 
 public class Car : Vehicle
 {
     public bool IsAutomatic { get; }
 
-    public Car(string registrationNumber, int wheelCount, VehicleColor color, bool isAutomatic) : base(
+    public Car(string registrationNumber, uint wheelCount, Color color, bool isAutomatic) : base(
         registrationNumber, wheelCount, color)
     {
         IsAutomatic = isAutomatic;

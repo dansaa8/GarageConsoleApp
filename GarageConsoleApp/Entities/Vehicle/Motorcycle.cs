@@ -1,10 +1,12 @@
+using System.Drawing;
+
 namespace GarageConsoleApp.Entities;
 
 public class Motorcycle : Vehicle
 {
     public double MaxSpeedKmPerHour { get; }
 
-    public Motorcycle(string registrationNumber, int wheelCount, VehicleColor color, double maxSpeedKmPerHour) : base(
+    public Motorcycle(string registrationNumber, uint wheelCount, Color color, double maxSpeedKmPerHour) : base(
         registrationNumber, wheelCount, color)
     {
         MaxSpeedKmPerHour = maxSpeedKmPerHour;

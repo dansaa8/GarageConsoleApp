@@ -1,10 +1,12 @@
+using System.Drawing;
+
 namespace GarageConsoleApp.Entities;
 
 public class Boat : Vehicle
 {
     public double MaxKnots { get; }
 
-    public Boat(string registrationNumber, int wheelCount, VehicleColor color, double maxKnots) : base(
+    public Boat(string registrationNumber, uint wheelCount, Color color, double maxKnots) : base(
         registrationNumber, wheelCount, color)
     {
         MaxKnots = maxKnots;

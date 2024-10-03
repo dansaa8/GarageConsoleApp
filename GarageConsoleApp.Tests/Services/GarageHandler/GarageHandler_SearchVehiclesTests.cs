@@ -1,3 +1,4 @@
+using System.Drawing;
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Services;
@@ -14,7 +15,7 @@ public class GarageHandler_SearchVehiclesTests
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         SearchOptions searchOptions = new SearchOptions();
-        searchOptions.Color = VehicleColor.Yellow;
+        searchOptions.Color = Color.Yellow;
         string expectedBoat = "Registration Number: boat123, Wheel Count: 0, Color: Yellow, Max Knots: 20,5";
         string expectedMc = "Registration Number: mc123, Wheel Count: 2, Color: Yellow, Max Speed Per Kilometer: 170";
         string expectedCar = "Registration Number: car123, Wheel Count: 4, Color: Yellow, Is Automatic: False";

@@ -1,12 +1,14 @@
+using System.Drawing;
+
 namespace GarageConsoleApp.Entities;
 
 public abstract class Vehicle : ICloneable
 {
     public string RegistrationNumber { get; }
-    public int WheelCount { get; }
-    public VehicleColor Color { get; }
+    public uint WheelCount { get; }
+    public Color Color { get; }
 
-    protected Vehicle(string registrationNumber, int wheelCount, VehicleColor color)
+    protected Vehicle(string registrationNumber, uint wheelCount, Color color)
     {
         RegistrationNumber = registrationNumber;
         WheelCount = wheelCount;
@@ -17,6 +19,6 @@ public abstract class Vehicle : ICloneable
 
     public override string ToString()
     {
-        return $"Registration Number: {RegistrationNumber}, Wheel Count: {WheelCount}, Color: {Color}";
+        return $"Registration Number: {RegistrationNumber}, Wheel Count: {WheelCount}, Color: {Color.Name}";
     }
 }

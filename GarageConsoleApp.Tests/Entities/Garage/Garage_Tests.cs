@@ -1,3 +1,4 @@
+using System.Drawing;
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 
@@ -23,7 +24,7 @@ public class Garage_Tests
     {
         // Arrange
         int garageSize = 8;
-        Car car = new Car("abc123", 4, VehicleColor.Black, true);
+        Car car = new Car("abc123", 4, Color.Black, true);
 
         // Act
         Garage<Vehicle> garage = new Garage<Vehicle>(garageSize);
@@ -38,8 +39,8 @@ public class Garage_Tests
     {
         // Arrange
         int garageSize = 1;
-        Car car1 = new Car("abc123", 4, VehicleColor.Black, true);
-        Car car2 = new Car("def456", 4, VehicleColor.Black, true);
+        Car car1 = new Car("abc123", 4, Color.Black, true);
+        Car car2 = new Car("def456", 4, Color.Black, true);
 
 
         // Act
@@ -58,8 +59,8 @@ public class Garage_Tests
     {
         // Arrange
         int garageSize = 2;
-        Car car1 = new Car("abc123", 4, VehicleColor.Black, true);
-        Car car2 = new Car("def456", 4, VehicleColor.Black, true);
+        Car car1 = new Car("abc123", 4, Color.Black, true);
+        Car car2 = new Car("def456", 4, Color.Black, true);
 
 
         // Act
@@ -77,9 +78,9 @@ public class Garage_Tests
     {
         // Arrange
         int garageSize = 3;
-        Car car = new Car("abc123", 4, VehicleColor.Black, true);
-        Boat boat = new Boat("def456", 4, VehicleColor.Red, 20.5);
-        Motorcycle mc = new Motorcycle("ghi789", 2, VehicleColor.Yellow, 255);
+        Car car = new Car("abc123", 4, Color.Black, true);
+        Boat boat = new Boat("def456", 0, Color.Red, 20.5);
+        Motorcycle mc = new Motorcycle("ghi789", 2, Color.Yellow, 255);
 
         // Act
         Garage<Vehicle> garage = new Garage<Vehicle>(garageSize);
@@ -89,7 +90,7 @@ public class Garage_Tests
         garage.RemoveByRegNumber("abc123"); // the car should not be in foreach
 
         string expectedBoatString =
-            "Registration Number: def456, Wheel Count: 4, Color: Red, Max Knots: 20,5";
+            "Registration Number: def456, Wheel Count: 0, Color: Red, Max Knots: 20,5";
         string expectedMcString =
             "Registration Number: ghi789, Wheel Count: 2, Color: Yellow, Max Speed Per Kilometer: 255";
 

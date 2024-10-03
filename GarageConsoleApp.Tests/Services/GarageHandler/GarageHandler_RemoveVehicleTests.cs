@@ -1,3 +1,4 @@
+using System.Drawing;
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Services;
@@ -13,7 +14,7 @@ public class GarageHandler_RemoveVehicleTests
         Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
-        Boat boat = new Boat("jkl321", 2, VehicleColor.White, 5.5);
+        Boat boat = new Boat("jkl321", 2, Color.White, 5.5);
         garage.Add(boat);
         string expectedString = "Registration Number: jkl321, Wheel Count: 2, Color: White, Max Knots: 5,5";
 
