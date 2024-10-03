@@ -57,7 +57,7 @@ public class GarageHandler<T> where T : Vehicle
         return result.ToString().Trim(); // Remove any trailing spaces
     }
 
-    public List<string> SearchForVehicles(Garage<T> garage, SearchOptions searchOptions)
+    public List<string> SearchVehicles(Garage<T> garage, SearchOptions searchOptions)
     {
         List<string> foundVehicles = new();
         foreach (T vehicle in garage)

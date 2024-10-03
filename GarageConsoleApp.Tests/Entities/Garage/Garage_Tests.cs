@@ -3,7 +3,7 @@ using GarageConsoleApp.Entities.Garage;
 
 namespace GarageConsoleApp.Tests.Entities.Garage;
 
-public class GarageTest
+public class Garage_Tests
 {
     [Fact]
     public void Constructor_GivenGarageSize_ReturnsNonNullGarage()
