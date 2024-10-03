@@ -1,40 +1,43 @@
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Services;
+using System.Collections.Generic;  // Required for List
 
 namespace GarageConsoleApp.Tests.Services.GarageHandler;
 
 public class GarageHandler_ListAllVehiclesTests
 {
     [Fact]
-    public void ListAllVehiclesWithGarageHandler_WhenCalled_ReturnsStringWithAllVehicles()
+    public void ListAllVehicles_WhenCalled_ReturnsListWithAllVehicles()
     {
         // Arrange
         Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
-        string expectedString =
-            "Registration Number: abc123, Wheel Count: 4, Color: Black, Is Automatic: True" +
-            "\nRegistration Number: def456, Wheel Count: 4, Color: Red, Max Knots: 20,5" +
-            "\nRegistration Number: ghi789, Wheel Count: 2, Color: Yellow, Max Speed Per Kilometer: 255";
+        List<string> expectedList = new List<string>
+        {
+            "Registration Number: abc123, Wheel Count: 4, Color: Black, Is Automatic: True",
+            "Registration Number: def456, Wheel Count: 4, Color: Red, Max Knots: 20,5",
+            "Registration Number: ghi789, Wheel Count: 2, Color: Yellow, Max Speed Per Kilometer: 255"
+        };
 
         // Act
-        string actualString = garageHandler.ListAllVehicles(garage);
+        List<string> actualList = garageHandler.ListAllVehicles(garage);
 
         // Assert
-        Assert.Equal(expectedString, actualString);
+        Assert.Equal(expectedList, actualList);
     }
 
     [Fact]
-    public void ListAllVehiclesWithGarageHandler_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
+    public void ListAllVehicles_WhenCalledWithEmptyGarage_ReturnsEmptyList()
     {
         // Arrange
-        Garage<Vehicle> garage = new Garage<Vehicle>(8); // empty
+        Garage<Vehicle> garage = new Garage<Vehicle>(8);  // Empty garage
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         // Act
-        string actualString = garageHandler.ListAllVehicles(garage);
+        List<string> actualList = garageHandler.ListAllVehicles(garage);
 
         // Assert
-        Assert.Empty(actualString);
+        Assert.Empty(actualList);  // Assert that the returned list is empty
     }
 }

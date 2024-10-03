@@ -12,15 +12,15 @@ public class GarageHandler<T> where T : Vehicle
         return removedVehicle?.ToString() ?? string.Empty;
     }
 
-    public string ListAllVehicles(Garage<T> garage)
+    public List<string> ListAllVehicles(Garage<T> garage)
     {
-        StringBuilder allVehicles = new StringBuilder();
+        List<String> allVehicles = new();
         foreach (T vehicle in garage)
         {
-            allVehicles.AppendLine(vehicle.ToString());
+            allVehicles.Add(vehicle.ToString());
         }
 
-        return allVehicles.ToString().Trim();
+        return allVehicles;
     }
 
     public string ListAllVehicleTypes(Garage<T> garage)

@@ -7,7 +7,7 @@ namespace GarageConsoleApp.Tests.Services.GarageHandler;
 public class GarageHandler_RemoveVehicleTests
 {
     [Fact]
-    public void RemoveVehicleWithGarageHandler_WhenCalled_ReturnsVehicleFromGarage()
+    public void RemoveVehicle_WhenCalled_ReturnsRemovedVehicleFromGarage()
     {
         // Arrange
         Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();
@@ -25,7 +25,7 @@ public class GarageHandler_RemoveVehicleTests
     }
 
     [Fact]
-    public void RemoveVehicleWithGarageHandler_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
+    public void RemoveVehicle_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
     {
         // Arrange
         Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();

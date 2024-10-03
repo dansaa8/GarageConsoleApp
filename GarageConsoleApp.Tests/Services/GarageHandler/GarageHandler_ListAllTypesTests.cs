@@ -40,7 +40,7 @@ public class GarageHandler_ListAllTypesTests
     }
 
     [Fact]
-    public void ListAllVehicleTypes_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
+    public void ListAllVehicleTypes_WithEmptyGarage_ReturnsEmptyString()
     {
         // Arrange
         Garage<Vehicle> garage = new Garage<Vehicle>(8); // Empty garage
