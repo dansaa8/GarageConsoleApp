@@ -11,7 +11,7 @@ public class GarageHandler_RemoveVehicleTests
     public void RemoveVehicle_WhenCalled_ReturnsRemovedVehicleFromGarage()
     {
         // Arrange
-        Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();
+        Garage<Vehicle> garage = GarageHandlerTestUtils.CreateGarageWith3Vehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         Boat boat = new Boat("jkl321", 2, Color.White, 5.5);
@@ -29,7 +29,7 @@ public class GarageHandler_RemoveVehicleTests
     public void RemoveVehicle_WhenCalledWithNonExistingVehicle_ReturnsEmptyString()
     {
         // Arrange
-        Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();
+        Garage<Vehicle> garage = GarageHandlerTestUtils.CreateGarageWith3Vehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         // Act

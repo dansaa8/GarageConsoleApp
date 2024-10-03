@@ -11,7 +11,7 @@ public class GarageHandler_ListAllVehiclesTests
     public void ListAllVehicles_WhenCalled_ReturnsListWithAllVehicles()
     {
         // Arrange
-        Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith3Vehicles();
+        Garage<Vehicle> garage = GarageHandlerTestUtils.CreateGarageWith3Vehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
         List<string> expectedList = new List<string>
         {

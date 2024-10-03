@@ -11,7 +11,7 @@ public class GarageHandler_SearchVehiclesTests
     public void SearchForVehicles_WithSearchCriteriaYellow_ShouldReturnAllYellowVehicles()
     {
         // Arrange
-        Garage<Vehicle> garage = GarageHandlerUtils.CreateGarageWith9Vehicles();
+        Garage<Vehicle> garage = GarageHandlerTestUtils.CreateGarageWith9Vehicles();
         GarageHandler<Vehicle> garageHandler = new GarageHandler<Vehicle>();
 
         SearchOptions searchOptions = new SearchOptions();

@@ -6,6 +6,11 @@ namespace GarageConsoleApp.Services;
 
 public class GarageHandler<T> where T : Vehicle
 {
+    public bool AddVehicle(Garage<T> garage, T vehicle)
+    {
+        return garage.Add(vehicle);
+    }
+    
     public string RemoveVehicle(Garage<T> garage, string vehicleRegNr)
     {
         T? removedVehicle = garage.RemoveByRegNumber(vehicleRegNr);
