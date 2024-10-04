@@ -10,14 +10,14 @@ public class App
 {
     private readonly ConsoleUI ui;
     private readonly List<Garage<Vehicle>> garages;
-    private readonly GarageHandler<Vehicle> garageHandler;
+    private readonly MenuHandler menuHandler;
 
     public App()
     {
         ui = new ConsoleUI();
         garages = new List<Garage<Vehicle>>();
-        garages.Add(new Garage<Vehicle>(6));
-        garageHandler = new GarageHandler<Vehicle>();
+        garages.Add(new Garage<Vehicle>(4));
+        menuHandler = new MenuHandler();
     }
 
     public void Run()
@@ -25,6 +25,7 @@ public class App
         bool appRunning = true;
         do
         {
+            Console.Clear();
             ui.PrintMenu();
             GetCommand();
         } while (appRunning);
@@ -37,30 +38,28 @@ public class App
         switch (keyPressed)
         {
             case ConsoleKey.L:
-            {
-                List<string> allVehicles = garageHandler.ListAllVehicles(garages[0]);
-                foreach (var vehicle in allVehicles)
-                {
-                    Console.WriteLine(vehicle);
-                }
-                break;
-            }
+                menuHandler.ListVehicles(garages[0]);
+            break;
             case ConsoleKey.T:
             {
-                string allTypes = garageHandler.ListAllVehicleTypes(garages[0]);
-                Console.WriteLine(allTypes);
+                menuHandler.ListVehicleTypes(garages[0]);
+            }
+            break;
+            case ConsoleKey.A:
+            {
+                menuHandler.AddVehicle(garages[0]);
                 break;
             }
-            case ConsoleKey.A:
-                garageHandler.AddVehicle(garages[0], VehicleFactory.CreateVehicle());
-                break;
             case ConsoleKey.D:
-                garageHandler.RemoveVehicle(garages[0],
-                    InputHandler.GetRegistrationNumber(false));
+            {
+                menuHandler.RemoveVehicle(garages[0]);
                 break;
+            }
             case ConsoleKey.S:
-                garageHandler.SearchVehicles(garages[0], SearchFactory.CreateVehicleSearch());
+            {
+                menuHandler.SearchVehicles(garages[0]);
                 break;
+            }
         }
     }
 }

@@ -3,9 +3,10 @@ using GarageConsoleApp.Entities;
 
 namespace GarageConsoleApp.Handlers;
 
-public static class VehicleFactory
+// Factory method used to create a new vehicle of a Vehicle-subclass from user input
+public class VehicleFactory
 {
-    public static Vehicle CreateVehicle()
+    public Vehicle CreateVehicle()
     {
         VehicleType type = InputHandler.GetVehicleType(false).Value;
         string regNr = InputHandler.GetRegistrationNumber(false);

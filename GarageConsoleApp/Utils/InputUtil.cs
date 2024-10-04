@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace GarageConsoleApp.Utils
 {
-    public static class Util
+    public static class InputUtil
     {
         // Asks for a string input and allows skipping if allowNull is true.
         public static string? AskForString(string prompt, bool allowNull)

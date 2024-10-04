@@ -4,6 +4,7 @@ using GarageConsoleApp.Services;
 
 namespace GarageConsoleApp.Handlers;
 
+// Factory method used to create a struct of searchoptions from user input
 public static class SearchFactory
 {
     public static SearchOptions CreateVehicleSearch()
