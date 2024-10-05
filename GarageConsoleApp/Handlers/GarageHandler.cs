@@ -16,6 +16,11 @@ public class GarageHandler<T> where T : Vehicle
         T? removedVehicle = garage.RemoveByRegNumber(vehicleRegNr);
         return removedVehicle?.ToString() ?? string.Empty;
     }
+    
+    public bool IsGarageFull(Garage<T> garage)
+    {
+        return !garage.HasEmptySpots();
+    }
 
     public List<string> ListAllVehicles(Garage<T> garage)
     {

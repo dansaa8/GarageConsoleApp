@@ -1,28 +1,7 @@
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Runtime.InteropServices.ComTypes;
-
 namespace GarageConsoleApp.Utils
 {
-    public static class InputUtil
+    public static class ValueInputUtil
     {
-        // Asks for a string input and allows skipping if allowNull is true.
-        public static string? AskForString(string prompt, bool allowNull)
-        {
-            Console.Write($"{prompt}{(allowNull ? " (Optional - press Enter to skip)" : "")}: ");
-            while (true)
-            {
-                string? input = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(input) || allowNull)
-                {
-                    return string.IsNullOrWhiteSpace(input) ? null : input;
-                }
-
-                Console.WriteLine($"Please enter a valid {prompt}");
-            }
-        }
-
         // Asks for an unsigned integer input and allows skipping if allowNull is true.
         public static uint? AskForUInt(string prompt, bool allowNull)
         {
@@ -40,7 +19,7 @@ namespace GarageConsoleApp.Utils
                     return null;
                 }
 
-                Console.WriteLine($"Please enter a valid {prompt}");
+                Console.Write($"Please enter a valid {prompt}: ");
             }
         }
 
@@ -64,36 +43,6 @@ namespace GarageConsoleApp.Utils
                 Console.WriteLine($"Please enter a valid {prompt}");
             }
         }
-
-        // Asks for a color input and allows skipping if allowNull is true.
-        public static Color? AskForColor(string prompt, bool allowNull)
-        {
-            Console.Write($"{prompt}{(allowNull ? " (Optional - press Enter to skip)" : "")}: ");
-            while (true)
-            {
-                string? input = Console.ReadLine();
-
-                if (!string.IsNullOrWhiteSpace(input))
-                {
-                    try
-                    {
-                        Color color = (Color)TypeDescriptor.GetConverter(typeof(Color)).ConvertFromString(input);
-                        return color;
-                    }
-                    catch
-                    {
-                        // Check against known colors
-                        Console.WriteLine("Please enter a valid color: ");
-                    }
-                }
-
-                if (string.IsNullOrWhiteSpace(input) && allowNull)
-                {
-                    return null;
-                }
-            }
-        }
-
 
         // Asks for a boolean input (yes/no) and allows skipping if allowNull is true.
         public static bool? AskForBool(string prompt, bool allowNull)

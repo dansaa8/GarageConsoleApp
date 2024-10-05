@@ -48,13 +48,24 @@ public class MenuHandler
     {
         Console.Clear();
         Console.WriteLine("<Adding new vehicle>");
-        bool isAdded = garageHandler.AddVehicle(garage, vehicleFactory.CreateVehicle());
-        if (isAdded)
+        bool garageIsFull = garageHandler.IsGarageFull(garage);
+        if (garageIsFull)
         {
-            Console.Clear();
-            Console.WriteLine("Vehicle was added!\n");
+            Console.WriteLine("Garage is full!\n");
         }
-        else Console.WriteLine("Garage is full\n");
+        else
+        {
+            bool isAdded = garageHandler.AddVehicle(garage, vehicleFactory.CreateVehicle());
+            if (isAdded)
+            {
+                Console.Clear();
+                Console.WriteLine("Vehicle was added!\n");
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong. Vehicle was not added!\n");
+            }
+        }
 
         WaitForContinue();
     }

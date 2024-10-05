@@ -24,7 +24,7 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
 
         return false; // Garage is full
     }
-    
+
     public T? RemoveByRegNumber(string regNr)
     {
         for (int i = 0; i < _vehicles.Length; i++)
@@ -38,6 +38,17 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
         }
 
         return null;
+    }
+
+    public bool HasEmptySpots()
+    {
+        for (int i = 0; i < _vehicles.Length; i++)
+        {
+            if (_vehicles[i] == null)
+                return true;
+        }
+
+        return false;
     }
 
     public IEnumerator<T> GetEnumerator()
