@@ -10,7 +10,7 @@ public class Garage_Tests
     public void Constructor_GivenGarageSize_ReturnsNonNullGarage()
     {
         // Arrange
-        int garageSize = 8;
+        uint garageSize = 8;
 
         // Act
         Garage<Vehicle> garage = new Garage<Vehicle>(garageSize);
@@ -23,7 +23,7 @@ public class Garage_Tests
     public void AddVehicle_WhenCalled_ReturnsTrue()
     {
         // Arrange
-        int garageSize = 8;
+        uint garageSize = 8;
         Car car = new Car("abc123", 4, Color.Black, true);
 
         // Act
@@ -38,7 +38,7 @@ public class Garage_Tests
     public void AddVehicle_WhenGarageIsFull_ReturnsFalse()
     {
         // Arrange
-        int garageSize = 1;
+        uint garageSize = 1;
         Car car1 = new Car("abc123", 4, Color.Black, true);
         Car car2 = new Car("def456", 4, Color.Black, true);
 
@@ -58,7 +58,7 @@ public class Garage_Tests
     public void RemoveVehicle_WhenCalled_ReturnsRemovedVehicle()
     {
         // Arrange
-        int garageSize = 2;
+        uint garageSize = 2;
         Car car1 = new Car("abc123", 4, Color.Black, true);
         Car car2 = new Car("def456", 4, Color.Black, true);
 
@@ -77,7 +77,7 @@ public class Garage_Tests
     public void ForeachVehicle_WhenCalled_ReturnsAllVehicles()
     {
         // Arrange
-        int garageSize = 3;
+        uint garageSize = 3;
         Car car = new Car("abc123", 4, Color.Black, true);
         Boat boat = new Boat("def456", 0, Color.Red, 20.5);
         Motorcycle mc = new Motorcycle("ghi789", 2, Color.Yellow, 255);

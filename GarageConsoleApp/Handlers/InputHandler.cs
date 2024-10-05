@@ -47,5 +47,17 @@ namespace GarageConsoleApp.Handlers
             Console.Clear();
             return ReferenceInputUtil.AskForVehicleType(allowNull);
         }
+
+        public static uint GetGarageSize()
+        {
+            Console.Clear();
+            uint? GarageSize = ValueInputUtil.AskForUInt("Garage size", false);
+            if (GarageSize.HasValue)
+            {
+                return GarageSize.Value;
+            }
+
+            throw new InvalidOperationException("Garage size is required.");
+        }
     }
 }

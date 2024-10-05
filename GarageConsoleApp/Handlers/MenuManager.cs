@@ -1,16 +1,17 @@
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Services;
+using GarageConsoleApp.Utils;
 
 namespace GarageConsoleApp.Handlers;
 
-public class MenuHandler
+public class MenuManager
 {
     private readonly VehicleFactory vehicleFactory;
     private readonly GarageHandler<Vehicle> garageHandler;
 
 
-    public MenuHandler()
+    public MenuManager()
     {
         vehicleFactory = new VehicleFactory();
         garageHandler = new GarageHandler<Vehicle>();
@@ -27,7 +28,7 @@ public class MenuHandler
             allVehicles.ForEach(Console.WriteLine);
         }
 
-        WaitForContinue();
+        ConsoleUtil.WaitForContinue();
     }
 
     public void ListVehicleTypes(Garage<Vehicle> garage)
@@ -41,7 +42,7 @@ public class MenuHandler
             Console.WriteLine(allTypes);
         }
 
-        WaitForContinue();
+        ConsoleUtil.WaitForContinue();
     }
 
     public void AddVehicle(Garage<Vehicle> garage)
@@ -67,7 +68,7 @@ public class MenuHandler
             }
         }
 
-        WaitForContinue();
+        ConsoleUtil.WaitForContinue();
     }
 
     public void RemoveVehicle(Garage<Vehicle> garage)
@@ -84,7 +85,7 @@ public class MenuHandler
             Console.WriteLine("No vehicle was removed.");
         }
 
-        WaitForContinue();
+        ConsoleUtil.WaitForContinue();
     }
 
     public void SearchVehicles(Garage<Vehicle> garage)
@@ -97,12 +98,15 @@ public class MenuHandler
             foundVehicles.ForEach(Console.WriteLine);
         }
 
-        WaitForContinue();
+        ConsoleUtil.WaitForContinue();
     }
 
-    private void WaitForContinue()
+    public void CreateNewGarage(List<Garage<Vehicle>> garageList)
     {
-        Console.WriteLine("\nPress any key to continue...");
-        Console.ReadKey();
+        Console.WriteLine("Creating new garage");
+        Garage<Vehicle> newGarage = new Garage<Vehicle>(InputHandler.GetGarageSize());
+        garageList[0] = newGarage;
+        Console.WriteLine("Garage was created");
+        ConsoleUtil.WaitForContinue();
     }
 }

@@ -6,7 +6,7 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
 {
     private T?[] _vehicles;
 
-    public Garage(int garageSize)
+    public Garage(uint garageSize)
     {
         _vehicles = new T[garageSize];
     }

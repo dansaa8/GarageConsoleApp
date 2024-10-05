@@ -8,7 +8,7 @@ public static class GarageHandlerTestUtils
 {
     public static Garage<Vehicle> CreateGarageWith3Vehicles()
     {
-        int garageSize = 8;
+        uint garageSize = 8;
         Car car = new Car("abc123", 4, Color.Black, true);
         Boat boat = new Boat("def456", 4, Color.Red, 20.5);
         Motorcycle mc = new Motorcycle("ghi789", 2, Color.Yellow, 255);
