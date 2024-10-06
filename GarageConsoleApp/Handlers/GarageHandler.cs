@@ -1,10 +1,11 @@
 using System.Text;
-using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
+using GarageConsoleApp.Entities.Vehicle;
+using GarageConsoleApp.Services;
 
-namespace GarageConsoleApp.Services;
+namespace GarageConsoleApp.Handlers;
 
-public class GarageHandler<T> where T : Vehicle
+public class GarageHandler<T> where T : IVehicle
 {
     public bool AddVehicle(Garage<T> garage, T vehicle)
     {

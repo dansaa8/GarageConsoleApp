@@ -1,8 +1,9 @@
 using System.Collections;
+using GarageConsoleApp.Entities.Vehicle;
 
 namespace GarageConsoleApp.Entities.Garage;
 
-public class Garage<T> : IEnumerable<T> where T : Vehicle
+public class Garage<T> : IEnumerable<T> where T : IVehicle
 {
     private T?[] _vehicles;
 
@@ -32,12 +33,12 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
             if (_vehicles[i]?.RegistrationNumber == regNr)
             {
                 T removedVehicle = _vehicles[i];
-                _vehicles[i] = null;
+                    _vehicles[i] = default(T);
                 return removedVehicle;
             }
         }
 
-        return null;
+        return default(T);
     }
 
     public bool HasEmptySpots()

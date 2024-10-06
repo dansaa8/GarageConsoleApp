@@ -1,8 +1,7 @@
-using System.Drawing;
-using GarageConsoleApp.Entities;
+using GarageConsoleApp.Handlers;
 using GarageConsoleApp.Services;
 
-namespace GarageConsoleApp.Handlers;
+namespace GarageConsoleApp.Factories;
 
 // Factory method used to create a struct of searchoptions from user input
 public static class SearchFactory

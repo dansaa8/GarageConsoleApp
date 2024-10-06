@@ -1,7 +1,9 @@
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Services;
-using System.Collections.Generic;  // Required for List
+using System.Collections.Generic;
+using GarageConsoleApp.Entities.Vehicle;
+using GarageConsoleApp.Handlers; // Required for List
 
 namespace GarageConsoleApp.Tests.Services.GarageHandler;
 

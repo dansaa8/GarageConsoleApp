@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using GarageConsoleApp.Entities;
+using GarageConsoleApp.Entities.Vehicle;
 
 namespace GarageConsoleApp.Utils
 {

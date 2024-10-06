@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace GarageConsoleApp.Entities;
+namespace GarageConsoleApp.Entities.Vehicle;
 
 public class Car : Vehicle
 {

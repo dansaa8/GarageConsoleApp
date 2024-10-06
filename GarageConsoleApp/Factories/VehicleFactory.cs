@@ -1,7 +1,8 @@
 using System.Drawing;
-using GarageConsoleApp.Entities;
+using GarageConsoleApp.Entities.Vehicle;
+using GarageConsoleApp.Handlers;
 
-namespace GarageConsoleApp.Handlers;
+namespace GarageConsoleApp.Factories;
 
 // Factory method used to create a new vehicle of a Vehicle-subclass from user input
 public class VehicleFactory

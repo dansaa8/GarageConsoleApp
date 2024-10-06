@@ -1,8 +1,10 @@
 using System.Drawing;
 
-namespace GarageConsoleApp.Entities;
+namespace GarageConsoleApp.Entities.Vehicle;
 
-public abstract class Vehicle : ICloneable
+
+
+public abstract class Vehicle : IVehicle
 {
     public string RegistrationNumber { get; }
     public uint WheelCount { get; }

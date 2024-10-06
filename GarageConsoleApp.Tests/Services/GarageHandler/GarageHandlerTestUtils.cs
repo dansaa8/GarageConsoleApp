@@ -1,6 +1,7 @@
 using System.Drawing;
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
+using GarageConsoleApp.Entities.Vehicle;
 
 namespace GarageConsoleApp.Tests.Services.GarageHandler;
 

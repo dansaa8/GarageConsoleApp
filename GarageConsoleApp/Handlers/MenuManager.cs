@@ -1,5 +1,7 @@
 using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
+using GarageConsoleApp.Entities.Vehicle;
+using GarageConsoleApp.Factories;
 using GarageConsoleApp.Services;
 using GarageConsoleApp.Utils;
 

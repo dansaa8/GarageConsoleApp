@@ -1,4 +1,4 @@
-namespace GarageConsoleApp.Entities;
+namespace GarageConsoleApp.Entities.Vehicle;
 
 public enum VehicleType
 {
