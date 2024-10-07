@@ -1,25 +1,24 @@
-using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Entities.Vehicle;
 using GarageConsoleApp.Factories;
-using GarageConsoleApp.Services;
+using GarageConsoleApp.Handlers;
 using GarageConsoleApp.Utils;
 
-namespace GarageConsoleApp.Handlers;
+namespace GarageConsoleApp.UI;
 
-public class MenuManager
+public class MenuManager : IUI
 {
     private readonly VehicleFactory vehicleFactory;
-    private readonly GarageHandler<Vehicle> garageHandler;
+    private readonly GarageHandler<IVehicle> garageHandler;
 
 
     public MenuManager()
     {
         vehicleFactory = new VehicleFactory();
-        garageHandler = new GarageHandler<Vehicle>();
+        garageHandler = new GarageHandler<IVehicle>();
     }
 
-    public void ListVehicles(Garage<Vehicle> garage)
+    public void ListVehicles(Garage<IVehicle> garage)
     {
         Console.Clear();
         List<string> allVehicles = garageHandler.ListAllVehicles(garage);
@@ -33,7 +32,7 @@ public class MenuManager
         ConsoleUtil.WaitForContinue();
     }
 
-    public void ListVehicleTypes(Garage<Vehicle> garage)
+    public void ListVehicleTypes(Garage<IVehicle> garage)
     {
         Console.Clear();
         string allTypes = garageHandler.ListAllVehicleTypes(garage);
@@ -47,7 +46,7 @@ public class MenuManager
         ConsoleUtil.WaitForContinue();
     }
 
-    public void AddVehicle(Garage<Vehicle> garage)
+    public void AddVehicle(Garage<IVehicle> garage)
     {
         Console.Clear();
         Console.WriteLine("<Adding new vehicle>");
@@ -73,7 +72,7 @@ public class MenuManager
         ConsoleUtil.WaitForContinue();
     }
 
-    public void RemoveVehicle(Garage<Vehicle> garage)
+    public void RemoveVehicle(Garage<IVehicle> garage)
     {
         string removedVehicle = garageHandler.RemoveVehicle(garage,
             InputHandler.GetRegistrationNumber(false));
@@ -90,7 +89,7 @@ public class MenuManager
         ConsoleUtil.WaitForContinue();
     }
 
-    public void SearchVehicles(Garage<Vehicle> garage)
+    public void SearchVehicles(Garage<IVehicle> garage)
     {
         List<string> foundVehicles = garageHandler.SearchVehicles(garage, SearchFactory.CreateVehicleSearch());
         if (!foundVehicles.Any()) Console.WriteLine("No vehicles found with given search criteria");
@@ -103,10 +102,10 @@ public class MenuManager
         ConsoleUtil.WaitForContinue();
     }
 
-    public void CreateNewGarage(List<Garage<Vehicle>> garageList)
+    public void CreateNewGarage(List<Garage<IVehicle>> garageList)
     {
         Console.WriteLine("Creating new garage");
-        Garage<Vehicle> newGarage = new Garage<Vehicle>(InputHandler.GetGarageSize());
+        Garage<IVehicle> newGarage = new Garage<IVehicle>(InputHandler.GetGarageSize());
         garageList[0] = newGarage;
         Console.WriteLine("Garage was created");
         ConsoleUtil.WaitForContinue();

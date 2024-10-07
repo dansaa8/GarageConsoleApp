@@ -5,7 +5,7 @@ using GarageConsoleApp.Services;
 
 namespace GarageConsoleApp.Handlers;
 
-public class GarageHandler<T> where T : IVehicle
+public class GarageHandler<T> : IGarageHandler<T> where T : IVehicle
 {
     public bool AddVehicle(Garage<T> garage, T vehicle)
     {

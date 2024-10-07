@@ -3,19 +3,20 @@ using GarageConsoleApp.Entities;
 using GarageConsoleApp.Entities.Garage;
 using GarageConsoleApp.Entities.Vehicle;
 using GarageConsoleApp.Handlers;
+using GarageConsoleApp.UI;
 using GarageConsoleApp.Utils;
 
 namespace GarageConsoleApp;
 
 public class App
 {
-    private readonly List<Garage<Vehicle>> garages;
+    private readonly List<Garage<IVehicle>> garages;
     private readonly MenuManager _menuManager;
 
     public App()
     {
-        garages = new List<Garage<Vehicle>>();
-        garages.Add(new Garage<Vehicle>(4));
+        garages = new List<Garage<IVehicle>>();
+        garages.Add(new Garage<IVehicle>(4));
         PopulateGarageWithInitialValues(garages[0]);
         _menuManager = new MenuManager();
     }
@@ -63,7 +64,7 @@ public class App
             case ConsoleKey.N:
             {
                 Console.WriteLine("Creating new garage");
-                garages[0] = new Garage<Vehicle>(InputHandler.GetGarageSize());
+                garages[0] = new Garage<IVehicle>(InputHandler.GetGarageSize());
                 Console.WriteLine("Garage was created");
                 break;
             }
@@ -75,7 +76,7 @@ public class App
         }
     }
 
-    private void PopulateGarageWithInitialValues(Garage<Vehicle> garage)
+    private void PopulateGarageWithInitialValues(Garage<IVehicle> garage)
     {
         garage.Add(new Boat("boat1", 0, Color.Pink, 25.3));
         garage.Add(new Boat("boat2", 0, Color.Yellow, 25.3));
